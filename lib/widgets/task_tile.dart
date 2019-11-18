@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todoey/widgets/task_checkbox.dart';
 
 class TaskTile extends StatefulWidget {
   final String task;
@@ -11,12 +12,6 @@ class TaskTile extends StatefulWidget {
 
 class _TaskTileState extends State<TaskTile> {
   bool isChecked = false;
-
-  void checkboxCallback(bool checkboxState) {
-    setState(() {
-      isChecked = checkboxState;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,24 +26,12 @@ class _TaskTileState extends State<TaskTile> {
       ),
       trailing: TaskCheckbox(
         checkboxState: isChecked,
-        toggleCheckboxState: checkboxCallback,
+        toggleCheckboxState: (bool checkboxState) {
+          setState(() {
+            isChecked = checkboxState;
+          });
+        },
       ),
-    );
-  }
-}
-
-class TaskCheckbox extends StatelessWidget {
-  final bool checkboxState;
-  final Function toggleCheckboxState;
-
-  TaskCheckbox({this.checkboxState, this.toggleCheckboxState});
-
-  @override
-  Widget build(BuildContext context) {
-    return Checkbox(
-      activeColor: Colors.lightBlueAccent,
-      value: checkboxState,
-      onChanged: toggleCheckboxState,
     );
   }
 }
