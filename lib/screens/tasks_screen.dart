@@ -5,14 +5,8 @@ import 'package:todoey/widgets/tasks_list.dart';
 import 'package:todoey/screens/add_task_screen.dart';
 
 class TasksScreen extends StatelessWidget {
-  void addTaskCallback(newTaskTitle) {
-//    setState(() {
-//      tasks.add(Task(name: newTaskTitle));
-//    });
-  }
-
   Widget buildBottomSheet(BuildContext context) {
-    return AddTaskScreen(addTaskCallback: addTaskCallback);
+    return AddTaskScreen();
   }
 
   @override
